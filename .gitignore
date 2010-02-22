@@ -1,0 +1,9 @@
+log/*.log
+tmp/**/*
+db/*.sqlite3
+doc/app/
+public/uploads/*
+nbproject*
+nbproject/**/*
+!.gitignore
+!.gitmodules

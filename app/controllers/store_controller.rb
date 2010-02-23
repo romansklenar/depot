@@ -14,7 +14,11 @@ class StoreController < ApplicationController
     else
       @cart = find_cart
       @current_item = @cart.add_product(product)
-      respond_to { |format| format.js }
+      if request.xhr?
+        respond_to { |format| format.js }
+      else
+        redirect_to_index
+      end
     end
   end
 

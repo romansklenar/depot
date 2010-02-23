@@ -13,7 +13,7 @@ class StoreController < ApplicationController
       redirect_to_index("Invalid product" )
     else
       @cart = find_cart
-      @cart.add_product(product)
+      @current_item = @cart.add_product(product)
       respond_to { |format| format.js }
     end
   end

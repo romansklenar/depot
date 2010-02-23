@@ -5,9 +5,16 @@ class StoreController < ApplicationController
 
 
   def add_to_cart
-    @cart = find_cart
-    product = Product.find(params[:id])
-    @cart.add_product(product)
+    begin
+      product = Product.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error("Attempt to access invalid product #{params[:id]}" )
+      flash[:notice] = "Invalid product"
+      redirect_to :action => :index
+    else
+      @cart = find_cart
+      @cart.add_product(product)
+    end
   end
 
 

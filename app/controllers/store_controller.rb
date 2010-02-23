@@ -21,8 +21,7 @@ class StoreController < ApplicationController
 
   def empty_cart
     session[:cart] = nil
-    @cart = find_cart
-    respond_to { |format| format.js }
+    redirect_to_index
   end
 
 

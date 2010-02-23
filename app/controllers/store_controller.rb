@@ -14,14 +14,15 @@ class StoreController < ApplicationController
     else
       @cart = find_cart
       @cart.add_product(product)
-      redirect_to_index
+      respond_to { |format| format.js }
     end
   end
 
 
   def empty_cart
     session[:cart] = nil
-    redirect_to_index("Your cart is currently empty" )
+    @cart = find_cart
+    respond_to { |format| format.js }
   end
 
 

@@ -5,7 +5,7 @@ class InfoController < ApplicationController
     @orders  = @product.orders
     respond_to do |format|
       format.html
-      format.xml { render :layout => false }
+      format.xml { render :xml => @product.to_xml(:include => :orders) }
     end
   end
 

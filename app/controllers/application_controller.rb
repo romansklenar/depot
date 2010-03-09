@@ -4,13 +4,13 @@
 class ApplicationController < ActionController::Base
   before_filter :authorize, :except => :login
 
-  session :session_key => '_depot_session_id'
+  # session :session_key => '_depot_session_id' # deprecated
 
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
-  protect_from_forgery :secret => '8c3e099237e6366fd2f5366e9c430e79'
+  # protect_from_forgery :secret => '8c3e099237e6366fd2f5366e9c430e79' # deprecated
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
